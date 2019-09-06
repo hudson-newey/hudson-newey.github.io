@@ -23,7 +23,9 @@ function navigate(e) {
   }
 }
 
-function showSearch() {
-  document.getElementById('search-bar').style.display = "inline";
-  document.getElementById('search-bar').focus();
+function showSearch(e) {
+  var key=e.keyCode || e.which;
+  if (key!=27)
+    document.getElementById('search-bar').style.display = "inline";
+    document.getElementById('search-bar').focus();
 }
