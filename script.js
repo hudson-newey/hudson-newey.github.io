@@ -8,24 +8,26 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 
+SB = document.getElementById('search-bar')
 function navigate(e) {
  var key=e.keyCode || e.which;
-  if (key==13) {
-    if (document.getElementById('search-bar').value.includes("://"))
-      document.location.href = document.getElementById('search-bar').value;
-    else
-      document.location.href = "https://www.google.com/search?q=" + document.getElementById('search-bar').value;
+  if (key==13 && !(SB.value == "" || SB.value == null)) {
+      if (SB.value.includes("://"))
+        document.location.href = SB.value;
+      else
+        document.location.href = "https://www.google.com/search?q=" + SB.value;
   }
 
   // hide search bar
   if (key==27) {
-    document.getElementById("search-bar").style.display = "none";
+    SB.style.display = "none";
+    SB.value = "";
   }
 }
 
 function showSearch(e) {
   var key=e.keyCode || e.which;
-  if (key!=27)
-    document.getElementById('search-bar').style.display = "inline";
-    document.getElementById('search-bar').focus();
+  if (key!=27 && ((key > 64 && key < 111) || (key > 186 && key < 223)))
+    SB.style.display = "inline";
+    SB.focus();
 }
