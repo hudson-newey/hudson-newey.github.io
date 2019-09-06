@@ -99,3 +99,26 @@
   left: 10px;
   cursor: pointer;
 }
+
+
+/* SEARCH BAR */
+input#search-bar {
+  position: relative;
+  left: 3%;
+  top: 25%;
+  font-size: 26px;
+  border-style: none;
+  margin: auto;
+  width: 60%;
+  text-align: center;
+  top: 60%;
+  left: 50%;
+  padding: 12px;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  display: none;
+}
+.inputDark {
+  color: #abb2bf;
+  background-color: #21252b;
+}
