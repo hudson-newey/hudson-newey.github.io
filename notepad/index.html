@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Notepad</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Dosis:700" rel="stylesheet">
+</head>
+<body>
+
+<input class="text" type="file" onchange="readfile(this.files)">
+<input id="save" type="button" value="save on disk" onclick="download()">
+<textarea class="text" id="mainInput"></textarea>
+
+<script src="script.js" charset="utf-8"></script>
+
+</body>
+</html>
