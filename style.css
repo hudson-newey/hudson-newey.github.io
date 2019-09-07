@@ -1,3 +1,12 @@
+.container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: -moz-scrollbars-none;
+}
+.container::-webkit-scrollbar {
+    display: none;
+}
+
 .large-header {
   position: relative;
   width: 100%;
