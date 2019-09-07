@@ -32,3 +32,17 @@ input[type="button"] {
 	padding: 2.5px;
 	padding-bottom: 5px !important;
 }
+input[type="button"]:hover {
+	background-color: #2a2e36;
+	-moz-box-shadow:    1.5px 1.5px 2.5px 3px #2e2e2e;
+	-webkit-box-shadow: 1.5px 1.5px 2.5px 3px #2e2e2e;
+	box-shadow:         1.5px 1.5px 2.5px 3px #2e2e2e;
+}
+#mainInput::-moz-selection {
+	background-color: #20Effd;
+	color: #0f0f0f;
+}
+#mainInput::selection {
+	background-color: #20Effd;
+	color: #0f0f0f;
+}
