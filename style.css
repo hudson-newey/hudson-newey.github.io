@@ -26,6 +26,7 @@
   left: 50%;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
+  text-shadow: 2px 1px black;
 }
 
 .demo .main-title {
@@ -118,9 +119,10 @@ input#search-bar {
   transform: translate3d(-50%, -50%, 0);
   display: none;
   outline-color: #00AFFF;
-  outline-width: 1px;
 }
 .inputDark {
   color: #abb2bf;
   background-color: #21252b;
+  outline-color: #00AFFF;
+  outline-width: thick;
 }
