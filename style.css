@@ -117,6 +117,8 @@ input#search-bar {
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
   display: none;
+  outline-color: #00AFFF;
+  outline-width: 1px;
 }
 .inputDark {
   color: #abb2bf;
