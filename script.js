@@ -31,3 +31,16 @@ function showSearch(e) {
     SB.style.display = "inline";
     SB.focus();
 }
+
+function infinateScroll() {
+  var h = (screen.height / 3) + document.getElementById('webpage').scrollTop;
+  if (h < 10400) {
+    document.getElementById('infinateScroll').style.height = h + "px";
+  }
+}
+
+function start() {
+  infinateScroll();
+  setTimeout(start, 100);
+}
+start();
