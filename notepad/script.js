@@ -22,3 +22,7 @@ function readfile(filelist){
   };
   reader.readAsText(text);
 }
+
+function toggleSpelling() {
+	document.getElementById('mainInput').spellcheck = document.getElementById('spellcheck').checked;
+}
