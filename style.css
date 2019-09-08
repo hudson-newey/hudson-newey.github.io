@@ -36,6 +36,11 @@
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
   text-shadow: 2px 1px black;
+  transition: 0.7s;
+}
+.main-title:hover {
+  opacity: 0.20;
+  filter: alpha(opacity=20);
 }
 
 .demo .main-title {
@@ -113,7 +118,7 @@
 #addProgramsBTN {
   position: absolute;
   bottom: 70px;
-  color: #eee;
+  color: #d1d1d1;
   transition: 0.3s;
 }
 #addProgramsBTN:hover {
