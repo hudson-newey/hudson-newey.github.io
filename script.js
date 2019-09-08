@@ -30,6 +30,9 @@ function GetSubstringIndex(str, substring, n) {
     return index;
 }
 
+function delete_cookie(name) {
+  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
 
 
 
@@ -60,6 +63,7 @@ function navigate(e) {
     SB.style.display = "none";
     SB.value = "";
     createProgram(temps, false);
+    addingPrograms = false;
   }
 
   // hide search bar
@@ -100,12 +104,25 @@ function createProgram(program, install) {
   }
 }
 
+function uninstallProgram(program) {
+  var temps = getCookie("InstalledPrograms");
+  if (!temps.includes(program)) { console.log("program, " + program + " not found!"); return; } // if the program is not installed
+
+  delete_cookie("InstalledPrograms");
+  temps = temps.replace(program + '!', '')
+  var d = new Date();
+  document.cookie = 'InstalledPrograms=' + getCookie("InstalledPrograms") + '' + temps + '; expires=' + days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' 20:47:11 UTC; path=/'
+  window.location.reload();
+}
+
 function infinateScroll() {
   var h = (screen.height / 3) + document.getElementById('webpage').scrollTop;
   if (h < 10400) {
     document.getElementById('infinateScroll').style.height = h + "px";
   }
 }
+
+
 
 function loop() {
   infinateScroll();
