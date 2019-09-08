@@ -110,6 +110,15 @@
   z-index: 1;
   cursor: pointer;
 }
+#addProgramsBTN {
+  position: absolute;
+  bottom: 70px;
+  color: #eee;
+  transition: 0.3s;
+}
+#addProgramsBTN:hover {
+  color: white;
+}
 
 
 /* SEARCH BAR */
