@@ -89,6 +89,12 @@
   background-color: #181919;
 }
 
+.menuitem {
+  height: 25px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 /* Position the close button top right corner */
 .sidenav .closebtn {
   position: absolute;
@@ -121,7 +127,7 @@
   color: #d1d1d1;
   transition: 0.3s;
 }
-#addProgramsBTN:hover {
+.additem:hover {
   color: white;
 }
 
