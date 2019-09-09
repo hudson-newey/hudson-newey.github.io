@@ -21,12 +21,10 @@ function getCookie(cname) {
 
 function GetSubstringIndex(str, substring, n) {
     var times = 0, index = null;
-
     while (times < n && index !== -1) {
         index = str.indexOf(substring, index+1);
         times++;
     }
-
     return index;
 }
 
@@ -37,15 +35,8 @@ function delete_cookie(name) {
 
 
 
-/* Set the width of the side navigation to 250px */
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
+function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
+function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
 SB = document.getElementById('search-bar')
 function navigate(e) {
@@ -54,7 +45,8 @@ function navigate(e) {
       if (SB.value.includes("://"))
         document.location.href = SB.value;
       else
-        document.location.href = "https://duckduckgo.com/?q=" + SB.value + "&kj=#21252b&kx=#00afff&k7=#282c34&k8=#abb2bf&k9=#cbd2df&kaa=#abb2bf";
+        document.location.href = "https://duckduckgo.com/?q=" + SB.value +
+        "&kj=#21252b&kx=#00afff&k7=#282c34&k8=#abb2bf&k9=#cbd2df&kaa=#abb2bf";
   }
 
   // adding adding programs
@@ -66,7 +58,7 @@ function navigate(e) {
     addingPrograms = false;
   }
 
-  // hide search bar
+  // hide search bar if escape key is pressed
   if (key==27) {
     SB.style.display = "none";
     SB.value = "";
@@ -75,17 +67,9 @@ function navigate(e) {
 
 function showSearch(e) {
   var key=e.keyCode || e.which;
-  if (key!=27 && ((key > 64 && key < 111) || (key > 186 && key < 223) || key == "undefined"))
+  if (key!=27 && ((key > 31 && key < 112) || key == "undefined"))
     SB.style.display = "inline";
     SB.focus();
-}
-
-// when the user clicks on the plus/add button
-function addProgram() {
-  SB.style.display = "inline";
-  SB.focus();
-  addingPrograms = true;
-  closeNav();
 }
 
 // add the new program to the sidebar
@@ -143,8 +127,6 @@ for (var i = 0; i < programCount; i++) {
   loadPrograms = loadPrograms.replace('!','');
   createProgram(loadPrograms, true);
 }
-
-
 
 
 
