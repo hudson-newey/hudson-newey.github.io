@@ -11,13 +11,18 @@
   <!--SIDEBAR-->
   <div id="mySidenav" class="sidenav">
     <a href="javascript:void()" class="closebtn" onclick="closeNav();">&times;</a>
-    <a href="https://www.github.com/Grathium" class="menuitem">About</a>
+
+    <a id="menuTemplate" href="https://www.github.com/Grathium" class="menuitem">About</a>
     <a href="https://www.google.com" class="menuitem">Google</a>
     <a href="http://open.spotify.com" class="menuitem">Spotify</a>
     <a href="https://darksky.net" class="menuitem">Weather</a>
     <a href="Notepad/index.html" class="menuitem">Notepad</a>
 
-    <a id="addProgramsBTN" href="#" class="additem" onclick="addProgram();"><h3>+</h3></a>
+    <a id="addProgramsBTN" href="#" class="additem" onclick="
+      SB.style.display = 'inline';
+      SB.focus();
+      addingPrograms = true;
+      closeNav();"><h3>+</h3></a>
   </div>
 
   <span class="menuBTN" onclick="openNav()">≡</span>
@@ -48,7 +53,7 @@
 
 <!--Infinate scroll website-->
 <div id="infinateScroll" class="websiteScroll">
-  <iframe id="websiteScroll" src="https://www.abc.net.au/news/" scrolling="no" seamless></iframe>
+  <iframe id="websiteScroll" src="<!--https://www.abc.net.au/news/-->" scrolling="no" seamless></iframe>
 </div>
 
 <footer>
