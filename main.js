@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, globalShortcut } = require('electron')
 const urls = [
     "http://localhost:8080"
 ]
@@ -28,4 +28,18 @@ const createWindow = () =>{
     });
 }
 
-app.on('ready', createWindow);
+function createGlobalShortcut() {
+    globalShortcut.register("CommandOrControl+H", () => {
+        win.loadURL(urls[0]);
+    });
+
+    console.log(
+        "Is global shortcut registered: ",
+        globalShortcut.isRegistered("CommandOrControl+Alt+A")
+    );
+}
+
+app.on("ready", () => {
+    createWindow();
+    createGlobalShortcut();
+});
