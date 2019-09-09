@@ -1,9 +1,11 @@
 {
   "name": "Grathium UI",
   "version": "0.1.0",
-  "main": "client.js",
-  "resizeable": "true",
+  "main": "main.js",
   "scripts": {
     "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^6.0.4"
   }
 }
