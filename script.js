@@ -1,5 +1,5 @@
 // Initilization
-var addingPrograms = false;
+var addingPrograms = "false";
 var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -41,7 +41,7 @@ function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 SB = document.getElementById('search-bar')
 function navigate(e) {
  var key=e.keyCode || e.which;
-  if ((key==13 && !(SB.value == "" || SB.value == null)) && addingPrograms == false) {
+  if ((key==13 && !(SB.value == "" || SB.value == null)) && addingPrograms == "search") {
       if (SB.value.includes("://"))
         document.location.href = SB.value;
       else
@@ -50,12 +50,21 @@ function navigate(e) {
   }
 
   // adding adding programs
-  if ((key==13 && !(SB.value == "" || SB.value == null)) && addingPrograms == true) {
+  if ((key==13 && !(SB.value == "" || SB.value == null)) && addingPrograms == "adding") {
     var temps = SB.value;
     SB.style.display = "none";
     SB.value = "";
     createProgram(temps, false);
-    addingPrograms = false;
+    addingPrograms = "search";
+  }
+
+  // removing adding programs
+  if ((key==13 && !(SB.value == "" || SB.value == null)) && addingPrograms == "removing") {
+    var temps = SB.value;
+    SB.style.display = "none";
+    SB.value = "";
+    uninstallProgram(temps, false);
+    addingPrograms = "search";
   }
 
   // hide search bar if escape key is pressed
@@ -69,6 +78,7 @@ function showSearch(e) {
   var key=e.keyCode || e.which;
   if (key!=27 && ((key > 31 && key < 112) || key == "undefined"))
     SB.style.display = "inline";
+    addingPrograms = "search";
     SB.focus();
 }
 
@@ -105,6 +115,7 @@ function infinateScroll() {
     document.getElementById('infinateScroll').style.height = h + "px";
   }
 }
+
 
 
 
