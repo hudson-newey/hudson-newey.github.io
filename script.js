@@ -76,7 +76,7 @@ function showSearch(e) {
 function createProgram(program, install) {
   var newProgram = document.createElement("a");
   newProgram.innerHTML = program;
-  newProgram.href = program + "/index.html";
+  newProgram.href = "applications/" + program + "/index.html";
   newProgram.className = "menuitem";
   document.getElementById("mySidenav").appendChild(newProgram);
 
