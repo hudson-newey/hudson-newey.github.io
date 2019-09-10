@@ -113,6 +113,7 @@
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
 .menuBTN {
   position: fixed;
   color: #f0f0f0;
@@ -121,12 +122,25 @@
   z-index: 1;
   cursor: pointer;
 }
+
 #addProgramsBTN {
   position: absolute;
   bottom: 70px;
-  color: #d1d1d1;
-  transition: 0.3s;
+  left: 10px
 }
+
+#removeProgramsBTN {
+  position: absolute;
+  bottom: 71px;
+  left: 60px;
+}
+
+.additem {
+  color: #cecece;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
 .additem:hover {
   color: white;
 }
@@ -150,6 +164,7 @@ input#search-bar {
   display: none;
   outline-color: #00AFFF;
 }
+
 .inputDark {
   color: #abb2bf;
   background-color: #21252b;
@@ -167,6 +182,7 @@ input#search-bar {
   margin: 0;
   padding: 0;
 }
+
 div iframe {
   position: relative;
   width: 100%;
