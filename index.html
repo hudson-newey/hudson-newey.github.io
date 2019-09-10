@@ -17,11 +17,17 @@
     <a href="applications/Calculator/index.html" class="menuitem">Calculator</a>
     <a href="http://open.spotify.com" class="menuitem">Spotify</a>
 
-    <a id="addProgramsBTN" href="#" class="additem" onclick="
+    <h1 id="removeProgramsBTN" href="#" class="additem" onclick="
       SB.style.display = 'inline';
       SB.focus();
-      addingPrograms = true;
-      closeNav();"><h3>+</h3></a>
+      addingPrograms = 'removing';
+      closeNav();"><b>-</b></h1>
+      
+    <h1 id="addProgramsBTN" class="additem" onclick="
+      SB.style.display = 'inline';
+      SB.focus();
+      addingPrograms = 'adding';
+      closeNav();">+</h1>
   </div>
 
   <span class="menuBTN" onclick="openNav()">≡</span>
@@ -52,7 +58,7 @@
 
 <!--Infinate scroll website-->
 <div id="infinateScroll" class="websiteScroll">
-  <iframe id="websiteScroll" src="https://www.abc.net.au/news/" scrolling="no" seamless></iframe>
+  <iframe id="websiteScroll" src="<!--https://www.abc.net.au/news/-->" scrolling="no" seamless></iframe>
 </div>
 
 <footer>
