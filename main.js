@@ -14,6 +14,7 @@ const createWindow = () =>{
             show: false
         }
     });
+    win.removeMenu();
     win.maximize();
     //win.webContents.
     console.log(urls[0]);
