@@ -10,6 +10,7 @@ const createWindow = () =>{
         fullscreen: true,
         alwaysOnTop: true,
         title: 'Grathium UI',
+	icon: __dirname + '/favicon.png',
         webPreferences:{
           plugins: true,
           nodeIntegration: false,
