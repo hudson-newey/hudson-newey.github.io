@@ -67,6 +67,7 @@ function navigate(e) {
     SB.style.display = "none";
     SB.value = "";
     addingPrograms = "search";
+    showTitle();
   }
 }
 
@@ -110,6 +111,11 @@ function infinateScroll() {
   }
 }
 
+function showTitle() {
+  $("#instant-answers").addClass("hiding");
+  document.getElementById('instant-answers').innerHTML='<i id="title"><h1><span class="thin">Grathium</span> Industries</h1></i>';
+}
+
 
 
 
@@ -132,6 +138,20 @@ for (var i = 0; i < programCount; i++) {
   loadPrograms = loadPrograms.replace('!','');
   createProgram(loadPrograms, true);
 }
+
+// instant answers (jquery)
+var b;
+function getanswer(q){
+  $.get("https://api.duckduckgo.com/?q="+q+"&format=json", function(a) {
+    b = JSON.parse(a);
+    if(b.Abstract=="") {
+      showTitle();
+    } else if(addingPrograms == "search") {
+      $("#instant-answers").removeClass("hiding");document.getElementById("instant-answers").innerHTML="<h3>"+b.Heading+"</h3><p>"+b.Abstract+"</p>";
+    }
+  });
+}
+
 
 
 
