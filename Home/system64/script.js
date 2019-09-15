@@ -116,14 +116,35 @@ function showTitle() {
   document.getElementById('instant-answers').innerHTML='<i id="title"><h1><span class="thin">Grathium</span> Industries</h1></i>';
 }
 
-
-
-
-function loop() {
-  infinateScroll();
-  setTimeout(loop, 100);
+// instant answers (jquery)
+var b;
+function getanswer(q){
+  $.get("https://api.duckduckgo.com/?q="+q+"&format=json", function(a) {
+    b = JSON.parse(a);
+    if(b.Abstract=="" || b.Abstract == null) {
+      showTitle();
+    } else if(addingPrograms == "search") {
+      $("#instant-answers").removeClass("hiding");
+      $("#instant-answers").html("<h3>"+b.Heading+"</h3><p>"+b.Abstract+"</p>");
+    }
+  });
 }
 
+// get background image using NASA apod API
+$.ajax({
+  type: "GET",
+  contentType: "application/json; charset=utf-8",
+  url: "https://api.nasa.gov/planetary/apod?api_key=YEcWXl5e7QFNqpZM5ApQaMZBMoPQWT4715sNJZHb",
+  data: "hd=True",
+  dataType: "json",
+  success: function (data) {
+    document.getElementById('large-header').style.backgroundImage = "url('" + data.url + "')";
+  },
+  error: function (result) {
+    // if it can't get the image using API
+    document.getElementById('large-header').style.backgroundImage = "url('Home/system64/background.png')";
+  }
+});
 
 // add previously installed programs
 var programList = getCookie("InstalledPrograms");
@@ -139,20 +160,8 @@ for (var i = 0; i < programCount; i++) {
   createProgram(loadPrograms, true);
 }
 
-// instant answers (jquery)
-var b;
-function getanswer(q){
-  $.get("https://api.duckduckgo.com/?q="+q+"&format=json", function(a) {
-    b = JSON.parse(a);
-    if(b.Abstract=="" || b.Abstract == null) {
-      showTitle();
-    } else if(addingPrograms == "search") {
-      $("#instant-answers").removeClass("hiding");document.getElementById("instant-answers").innerHTML="<h3>"+b.Heading+"</h3><p>"+b.Abstract+"</p>";
-    }
-  });
+function loop() {
+  infinateScroll();
+  setTimeout(loop, 100);
 }
-
-
-
-
 loop();
