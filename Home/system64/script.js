@@ -144,7 +144,7 @@ var b;
 function getanswer(q){
   $.get("https://api.duckduckgo.com/?q="+q+"&format=json", function(a) {
     b = JSON.parse(a);
-    if(b.Abstract=="") {
+    if(b.Abstract=="" || b.Abstract == null) {
       showTitle();
     } else if(addingPrograms == "search") {
       $("#instant-answers").removeClass("hiding");document.getElementById("instant-answers").innerHTML="<h3>"+b.Heading+"</h3><p>"+b.Abstract+"</p>";
