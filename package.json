@@ -1,6 +1,6 @@
 {
   "name": "grathium-ui",
-  "version": "0.1.4",
+  "version": "0.1.4.1",
   "main": "./Home/system64/window.js",
   "author": "Grathium Industries",
   "scripts": {
