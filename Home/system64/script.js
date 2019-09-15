@@ -33,7 +33,7 @@ function GetSubstringIndex(str, substring, n) {
 function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
 function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
 
-SB = document.getElementById('search-bar')
+SB = document.getElementById('search-bar');
 function navigate(e) {
   var key=e.keyCode || e.which;
   if ((key==13 && !(SB.value == "" || SB.value == null)) && addingPrograms == "search") {
