@@ -2,10 +2,12 @@
 <html id="webpage" class="container" lang="en" onkeydown="showSearch(event);" onscroll="updateFooter();">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Grathium UI</title>
   <link rel="shortcut icon" type="image/png" href="./Home/system64/favicon.png"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="./Home/system64/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
   <!--SIDEBAR-->
@@ -42,17 +44,20 @@
 
 <body>
 
+  <!--text input bar-->
   <div class="inputpopup">
     <input id="search-bar" class="inputDark" type="text" autocomplete="off"
-    spellcheck="false" onkeydown="navigate(event);" maxlength="124" autofocus></input>
+    spellcheck="false" onkeydown="navigate(event);"
+    onkeyup="getanswer(document.getElementById('search-bar').value)"
+    maxlength="124" autofocus></input>
   </div>
 
   <div class="container demo">
     <div class="content">
         <div id="large-header" class="large-header">
           <canvas id="demo-canvas"></canvas>
-          <i><h1 class="main-title"><span class="thin">Grathium</span> Industries</h1></i>
-          <p id="instant-answers"></p>
+          <div id="instant-answers" class="main-title" class="hiding"><i id="title"><h1><span class="thin">Grathium</span> Industries</h1></i></div>
+          <!--<div id="instant-answers" class="instant-answers" class="hiding"></div>-->
         </div>
     </div>
   </div>
