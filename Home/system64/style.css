@@ -39,6 +39,13 @@
   transform: translate3d(-50%, -50%, 0);
   text-shadow: 2px 1px black;
   transition: 0.7s;
+  /* disable selecting text */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .main-title:hover {
   opacity: 0.20;
@@ -73,7 +80,7 @@
   background-color: #111;
   overflow-x: hidden;
   padding-top: 60px;
-  transition: 0.5s;
+  transition: 0.4s;
 }
 
 /* The navigation menu links */
