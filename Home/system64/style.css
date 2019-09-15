@@ -21,10 +21,7 @@
   position: absolute;
   z-index: -1;
   top: 0px;
-  background-image: url("background.png");
-  /* background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
-  background-image: url("https://wallpapercave.com/wp/wp3284832.gif");
-  background-image: url("https://www.marcoguglie.it/Codepen/AnimatedHeaderBg/demo-1/img/demo-1-bg.jpg"); *//* Background Link */
+  /* background-image: url("background.png"); */ /* depricated background image meathod */
 }
 
 .main-title {
