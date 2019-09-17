@@ -138,7 +138,7 @@ $.ajax({
   data: "hd=True",
   dataType: "json",
   success: function (data) {
-    document.getElementById('large-header').style.backgroundImage = "url('" + data.url + "')";
+    document.getElementById('large-header').style.backgroundImage = "url('" + data.hdurl + "')";
   },
   error: function (result) {
     // if it can't get the image using API
