@@ -8,7 +8,7 @@ function navigate(e) {
       if (SB.value.includes("://"))
         document.location.href = SB.value;
       else
-        document.location.href = "https://www.google.com/search/q=" + SB.value;
+        document.location.href = "https://www.google.com/search?q=" + SB.value;
   }
 
   // hide search bar if escape key is pressed
