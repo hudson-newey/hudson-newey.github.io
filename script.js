@@ -57,14 +57,14 @@ $.ajax({
   type: "GET",
   contentType: "application/json; charset=utf-8",
   url: "https://api.nasa.gov/planetary/apod?api_key=YEcWXl5e7QFNqpZM5ApQaMZBMoPQWT4715sNJZHb",
-  data: "hd=True",
+  data: "hd=False",
   dataType: "json",
   success: function (data) {
-    document.getElementById('large-header').style.backgroundImage = "url('" + data.hdurl + "')";
+    document.getElementById('large-header').style.backgroundImage = "url('" + data.url + "')";
   },
   error: function (result) {
     // if it can't get the image using API
-    document.getElementById('large-header').style.backgroundImage = "url('Home/system64/background.png')";
+    document.getElementById('large-header').style.backgroundImage = "url('background.png')";
   }
 });
 
