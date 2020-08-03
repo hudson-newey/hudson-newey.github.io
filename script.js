@@ -27,7 +27,7 @@ function showSearch(e) {
 }
 
 function infinateScroll() {
-  var h = (screen.height / 3) + document.getElementById('webpage').scrollTop;
+  var h = (screen.height / 1.6) + document.getElementById('webpage').scrollTop;
   if (h < 10400) {
     document.getElementById('infinateScroll').style.height = h + "px";
   }
@@ -70,6 +70,6 @@ $.ajax({
 
 function loop() {
   infinateScroll();
-  setTimeout(loop, 60);
+  setTimeout(loop, 20);
 }
 loop();
