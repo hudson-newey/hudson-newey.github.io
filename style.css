@@ -124,7 +124,7 @@
 .menuBTN {
   position: fixed;
   color: #f1f1f0;
-  font-size: 4.9vh;
+  font-size: 5vh;
   left: 10px;
   z-index: 1;
   cursor: pointer;
