@@ -70,6 +70,6 @@ $.ajax({
 
 function loop() {
   infinateScroll();
-  setTimeout(loop, 20);
+  setTimeout(loop, 1);
 }
 loop();
