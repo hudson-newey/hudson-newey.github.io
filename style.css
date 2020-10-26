@@ -21,7 +21,7 @@
   position: absolute;
   z-index: -1;
   top: 0px;
-  /* background-image: url("background.png"); */ /* depricated background image meathod */
+  background-image: url("static/background.png"); */ /* depricated background image meathod */
 }
 
 .main-title {
@@ -30,7 +30,7 @@
   padding: 0;
   color: #F9F1E9;
   text-align: center;
-  top: 50%;
+  top: 35%;
   left: 50%;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
@@ -65,99 +65,34 @@
   }
 }
 
-/* MENU BAR */
-/* The side navigation menu */
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.4s;
-  font-size: 1.1em;
-}
-
-/* The navigation menu links */
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 1.5em;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a.menuitem:hover {
-  color: #f1f1f1;
-  background-color: #181919;
-}
-
-.menuitem {
-  height: 25px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-/* Position the close button top right corner */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
 #main {
   transition: margin-left .5s;
   padding: 20px;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.menuBTN {
-  position: fixed;
-  color: #f1f1f0;
-  font-size: 5vh;
-  left: 10px;
-  z-index: 1;
-  cursor: pointer;
-}
-
-
-/* SEARCH BAR */
-input#search-bar {
-  position: relative;
-  left: 3%;
-  top: 25%;
-  font-size: 26px;
-  border-style: none;
-  margin: auto;
-  width: 60%;
+/* LINKS */
+.link-container {
+  position: absolute;
   text-align: center;
-  top: 60%;
+  top: 51%;
   left: 50%;
-  padding: 12px;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
-  display: none;
-  outline-color: #00AFFF;
 }
 
-.inputDark {
-  color: #abb2bf;
-  background-color: #21252b;
-  outline-color: #00AFFF;
-  outline-width: thick;
+.link-container > a:active, a {
+  color: #eee;
+  font-size: 1.8em;
+  text-decoration: none;
+  padding: 10px;
 }
 
-/* bellow website */
+.link-container > a:hover{
+  color: #fff;
+  font-size: 2em;
+}
+
+/* BELLOW WEBSITE */
 .websiteScroll {
   position: absolute;
   top: 100%;

@@ -3,24 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Grathium UI</title>
-  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <link rel="shortcut icon" type="image/png" href="static/favicon.png"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
-  <!--SIDEBAR-->
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav();">&times;</a>
-
-    <a id="explorer" href="https://github.com/Grathium-Industries" class="menuitem">Github</a>
-    <a href="twitter.com/grathium" class="menuitem">Twitter</a>
-    <a href="https://www.reddit.com/u/Grathium-Industries/" class="menuitem">Reddit</a>
-      <a href="https://github.com/Grathium-Industries?tab=repositories" class="menuitem">Programs</a>
-    <a href="p/about.html" class="menuitem">About</a><br>
-  </div>
-
-  <span class="menuBTN" onclick="openNav()">≡</span>
   <div id="main">
   </div>
 </head>
@@ -28,20 +15,19 @@
 
 <body>
 
-  <!--text input bar-->
-  <div class="inputpopup">
-    <input id="search-bar" class="inputDark" type="text" autocomplete="off"
-    spellcheck="false" onkeydown="navigate(event);"
-    onkeyup="getanswer(document.getElementById('search-bar').value)"
-    maxlength="124" autofocus></input>
-  </div>
-
   <div class="container demo">
     <div class="content">
         <div id="large-header" class="large-header">
           <canvas id="demo-canvas"></canvas>
-          <div id="instant-answers" class="main-title" class="hiding"><i id="title"><h1><span class="thin">Grathium</span> Industries</h1></i></div>
+          <div class="main-title"><i id="title"><h1><span class="thin">Grathium</span> Industries</h1></i></div>
         </div>
+
+        <div class="link-container">
+        	<a href="https://github.com/Grathium-Industries">Github</a>
+        	<a href="https://www.reddit.com/u/Grathium-Industries">Reddit</a>
+        	<a href="https://twitter.com/grathium">Twitter</a>
+        </div>
+
     </div>
   </div>
   <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js'></script>
@@ -51,7 +37,7 @@
 
 <!--Infinate scroll website-->
 <div id="infinateScroll" class="websiteScroll">
-  <iframe id="websiteScroll" src="https://www.abc.net.au/news/" scrolling="no" seamless></iframe>
+  <iframe id="websiteScroll" src="deliveries.html" scrolling="no" seamless></iframe>
 </div>
 
 <footer>

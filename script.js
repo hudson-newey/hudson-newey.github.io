@@ -1,31 +1,3 @@
-function openNav() { document.getElementById("mySidenav").style.width = "250px"; }
-function closeNav() { document.getElementById("mySidenav").style.width = "0"; }
-
-SB = document.getElementById('search-bar');
-function navigate(e) {
-  var key=e.keyCode || e.which;
-  if (key==13 && !(SB.value == "" || SB.value == null)) {
-      if (SB.value.includes("://"))
-        document.location.href = SB.value;
-      else
-        document.location.href = "https://www.google.com/search?q=" + SB.value;
-  }
-
-  // hide search bar if escape key is pressed
-  if (key==27) {
-    SB.style.display = "none";
-    SB.value = "";
-    showTitle();
-  }
-}
-
-function showSearch(e) {
-  var key=e.keyCode || e.which;
-  if (key!=27 && ((key > 31 && key < 112) || key == "undefined"))
-    SB.style.display = "inline";
-    SB.focus();
-}
-
 function infinateScroll() {
   var h = (screen.height / 1.6) + document.getElementById('webpage').scrollTop;
   if (h < 10400) {
@@ -40,17 +12,6 @@ function showTitle() {
 
 // instant answers (jquery)
 var b;
-function getanswer(q){
-  $.get("https://api.duckduckgo.com/?q="+q+"&format=json", function(a) {
-    b = JSON.parse(a);
-    if(b.Abstract=="" || b.Abstract == null) {
-      showTitle();
-    } else if(addingPrograms == "search") {
-      $("#instant-answers").removeClass("hiding");
-      $("#instant-answers").html("<h3>"+b.Heading+"</h3><p>"+b.Abstract+"</p>");
-    }
-  });
-}
 
 // get background image using NASA apod API
 $.ajax({
@@ -64,7 +25,7 @@ $.ajax({
   },
   error: function (result) {
     // if it can't get the image using API
-    document.getElementById('large-header').style.backgroundImage = "url('background.png')";
+    document.getElementById('large-header').style.backgroundImage = "url('static/background.png')";
   }
 });
 
