@@ -13,7 +13,6 @@ function showTitle() {
 // instant answers (jquery)
 var b;
 
-/*
 // get background image using NASA apod API
 $.ajax({
   type: "GET",
@@ -29,7 +28,6 @@ $.ajax({
     document.getElementById('large-header').style.backgroundImage = "url('static/background.png')";
   }
 });
-*/
 
 function loop() {
   infinateScroll();
