@@ -1,3 +1,7 @@
+html {
+  background-color: black;
+}
+
 .container {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -21,7 +25,7 @@
   position: absolute;
   z-index: -1;
   top: 0px;
-  background-image: url("static/background.png"); */ /* depricated background image meathod */
+  background-image: url("../background.png"); */ /* depricated background image meathod */
 }
 
 .main-title {
@@ -74,10 +78,11 @@
 .link-container {
   position: absolute;
   text-align: center;
-  top: 51%;
+  top: calc( 35% + 120px );
   left: 50%;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
+  max-width: 700px;
 }
 
 .link-container > a:active, a {

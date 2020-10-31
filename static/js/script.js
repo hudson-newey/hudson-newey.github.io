@@ -5,6 +5,11 @@ function infinateScroll() {
   }
 }
 
+function showTitle() {
+  $("#instant-answers").addClass("hiding");
+  document.getElementById('instant-answers').innerHTML='<i id="title"><h1><span class="thin">Grathium</span> Industries</h1></i>';
+}
+
 // instant answers (jquery)
 var b;
 

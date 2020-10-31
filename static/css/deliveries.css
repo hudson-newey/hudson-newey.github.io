@@ -1,0 +1,38 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.product-container {;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    height: 250px;
+}
+
+.product-container:hover {
+	cursor: pointer;
+	background-color: rgb(225, 225, 225);
+}
+
+.product-heading {
+    text-decoration: bold;
+    color: black;
+}
+
+a:link {
+	color: #333;
+}
+
+a:visited {
+	color: #333;
+}
+
+a:hover {
+	color: #000;
+}
+
+a:active {
+	color: #333;
+}
