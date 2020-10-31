@@ -13,7 +13,7 @@
 
 .product-container:hover {
 	cursor: pointer;
-	background-color: rgb(225, 225, 225);
+	background-color: rgb(230, 230, 230);
 }
 
 .product-heading {
@@ -21,18 +21,11 @@
     color: black;
 }
 
-a:link {
+a:link, a:visited, a:active {
 	color: #333;
-}
-
-a:visited {
-	color: #333;
+    text-decoration: none;
 }
 
 a:hover {
 	color: #000;
-}
-
-a:active {
-	color: #333;
 }
