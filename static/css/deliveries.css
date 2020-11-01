@@ -3,12 +3,14 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
+    max-width: 100%;
 }
 
 .product-container {;
     border: 1px solid rgba(0, 0, 0, 0.5);
     padding: 20px;
-    height: 250px;
+    height: auto;
+    max-width: 99%;
 }
 
 .product-container:hover {
@@ -19,6 +21,12 @@
 .product-heading {
     text-decoration: bold;
     color: black;
+}
+
+.product-thumbnail {
+    position: relative;
+    width: 500px;
+    height: 300px;
 }
 
 a:link, a:visited, a:active {
