@@ -21,10 +21,16 @@ $.ajax({
   data: "hd=False",
   dataType: "json",
   success: function (data) {
-    document.getElementById('large-header').style.backgroundImage = "url('" + data.url + "')";
+    if (!data.url.includes("youtube")) {
+      document.getElementById('large-header').style.backgroundImage = "url('" + data.url + "')";
+    } else {
+      console.log("Error APOD image is video. Reverting to default...");
+      document.getElementById('large-header').style.backgroundImage = "url('static/background.png')";
+    }
   },
   error: function (result) {
     // if it can't get the image using API
+    console.log("Error loading APOD image...");
     document.getElementById('large-header').style.backgroundImage = "url('static/background.png')";
   }
 });
