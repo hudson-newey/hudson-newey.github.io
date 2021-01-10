@@ -24,7 +24,7 @@
 
 .description {
   position: relative;
-  top: -300px;
+  top: -250px;
   left: 500px;
   max-width: calc(100% - 600px);
 }
@@ -37,7 +37,7 @@
 #minorProjects {
   position: relative;
   left: -500px;
-  top: 200px;
+  top: 150px;
 }
 
 a:link, a:visited, a:active {
