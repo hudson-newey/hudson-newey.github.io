@@ -1,13 +1,12 @@
 .products {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
   max-width: 100%;
 }
 
 .product-container {
-  border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 20px;
   height: auto;
   max-width: 99%;
@@ -23,10 +22,22 @@
   color: black;
 }
 
-.product-thumbnail {
+.description {
   position: relative;
+  top: -300px;
+  left: 500px;
+  max-width: calc(100% - 600px);
+}
+
+.product-thumbnail {
   width: 500px;
   height: 300px;
+}
+
+#minorProjects {
+  position: relative;
+  left: -500px;
+  top: 200px;
 }
 
 a:link, a:visited, a:active {
