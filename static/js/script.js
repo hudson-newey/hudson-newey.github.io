@@ -1,11 +1,11 @@
-function infinateScroll() {
+let infinateScroll = () => {
   var h = (screen.height / 1.6) + document.getElementById('webpage').scrollTop;
   if (h < 10400) {
     document.getElementById('infinateScroll').style.height = h + "px";
   }
 }
 
-function showTitle() {
+let showTitle = () => {
   $("#instant-answers").addClass("hiding");
   document.getElementById('instant-answers').innerHTML='<i id="title"><h1><span class="thin">Grathium</span> Industries</h1></i>';
 }
@@ -35,7 +35,7 @@ $.ajax({
   }
 });
 
-function loop() {
+let loop = () => {
   infinateScroll();
   setTimeout(loop, 1);
 }
