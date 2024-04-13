@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="newtab, new tab, new tab page, NTP, chrome, firefox"
+    />
+    <meta
+      name="description"
+      content="A new tab page that will never show advertisements or push a political agenda"
+    />
+    <title>New Tab</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <script type="module" crossorigin>var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
+(function polyfill() {
+  const relList = document.createElement("link").relList;
+  if (relList && relList.supports && relList.supports("modulepreload")) {
+    return;
+  }
+  for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
+    processPreload(link);
+  }
+  new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type !== "childList") {
+        continue;
+      }
+      for (const node of mutation.addedNodes) {
+        if (node.tagName === "LINK" && node.rel === "modulepreload")
+          processPreload(node);
+      }
+    }
+  }).observe(document, { childList: true, subtree: true });
+  function getFetchOpts(link) {
+    const fetchOpts = {};
+    if (link.integrity)
+      fetchOpts.integrity = link.integrity;
+    if (link.referrerPolicy)
+      fetchOpts.referrerPolicy = link.referrerPolicy;
+    if (link.crossOrigin === "use-credentials")
+      fetchOpts.credentials = "include";
+    else if (link.crossOrigin === "anonymous")
+      fetchOpts.credentials = "omit";
+    else
+      fetchOpts.credentials = "same-origin";
+    return fetchOpts;
+  }
+  function processPreload(link) {
+    if (link.ep)
+      return;
+    link.ep = true;
+    const fetchOpts = getFetchOpts(link);
+    fetch(link.href, fetchOpts);
+  }
+})();
+const commonWebsites = [
+  "https://www.google.com",
+  "https://www.youtube.com",
+  "https://www.facebook.com",
+  "https://www.wikipedia.org",
+  "https://www.reddit.com",
+  "https://www.amazon.com",
+  "https://www.twitter.com",
+  "https://www.ebay.com",
+  "https://www.netflix.com",
+  "https://www.instagram.com",
+  "https://www.yahoo.com",
+  "https://www.linkedin.com",
+  "https://www.microsoft.com",
+  "https://www.office.com",
+  "https://www.apple.com",
+  "https://www.imdb.com",
+  "https://www.pinterest.com",
+  "https://www.paypal.com",
+  "https://www.bing.com",
+  "https://www.wordpress.com",
+  "https://www.imgur.com",
+  "https://www.stackoverflow.com",
+  "https://www.quora.com",
+  "https://www.adobe.com",
+  "https://www.dropbox.com",
+  "https://www.espn.com",
+  "https://www.bbc.co.uk",
+  "https://www.cnn.com",
+  "https://www.nytimes.com",
+  "https://www.walmart.com",
+  "https://www.target.com",
+  "https://www.bestbuy.com",
+  "https://www.homedepot.com",
+  "https://www.lowes.com",
+  "https://www.macys.com",
+  "https://www.gamestop.com",
+  "https://www.costco.com",
+  "https://www.sears.com",
+  "https://www.kohls.com",
+  "https://www.nordstrom.com",
+  "https://www.zappos.com",
+  "https://www.etsy.com",
+  "https://www.groupon.com",
+  "https://www.expedia.com",
+  "https://www.booking.com",
+  "https://www.hotels.com",
+  "https://www.airbnb.com",
+  "https://www.tripadvisor.com",
+  "https://www.yelp.com",
+  "https://www.uber.com",
+  "https://www.lyft.com",
+  "https://www.doordash.com",
+  "https://www.grubhub.com",
+  "https://www.postmates.com",
+  "https://www.ubereats.com",
+  "https://www.eat24.com",
+  "https://www.delivery.com",
+  "https://www.chase.com",
+  "https://www.bankofamerica.com",
+  "https://www.citi.com",
+  "https://www.wellsfargo.com",
+  "https://www.usbank.com",
+  "https://www.americanexpress.com",
+  "https://www.capitalone.com",
+  "https://www.ally.com",
+  "https://www.discover.com",
+  "https://www.pnc.com",
+  "https://www.tdbank.com",
+  "https://www.suntrust.com",
+  "https://www.regions.com",
+  "https://www.53.com",
+  "https://www.huntington.com",
+  "https://www.bankrate.com",
+  "https://www.creditkarma.com",
+  "https://www.creditcards.com",
+  "https://www.mint.com",
+  "https://www.nerdwallet.com",
+  "https://www.bankbazaar.com",
+  "https://www.thebalance.com",
+  "https://www.bankrate.com",
+  "https://www.fool.com",
+  "https://www.investopedia.com",
+  "https://www.bloomberg.com",
+  "https://www.wsj.com",
+  "https://www.ft.com",
+  "https://www.economist.com",
+  "https://www.barrons.com",
+  "https://www.marketwatch.com",
+  "https://www.cnbc.com",
+  "https://www.businessinsider.com",
+  "https://www.forbes.com",
+  "https://www.reuters.com",
+  "https://www.bloomberg.com",
+  "https://www.wsj.com",
+  "https://www.ft.com",
+  "https://www.economist.com",
+  "https://www.barrons.com",
+  "https://www.marketwatch.com",
+  "https://www.cnbc.com"
+];
+const searchHistoryKey = "search-history";
+const searchHistoryQueries = ((_a = localStorage.getItem(searchHistoryKey)) == null ? void 0 : _a.split("|")) || [];
+const searchHistorySpan = [];
+const maxHistoryItems = 5;
+function addToSearchHistory(searchTerm) {
+  searchTerm = searchTerm.trim().toLowerCase();
+  if (!searchHistoryQueries.includes(searchTerm)) {
+    searchHistoryQueries.push(searchTerm);
+    localStorage.setItem(searchHistoryKey, searchHistoryQueries.join("|"));
+  }
+}
+function getHistory() {
+  searchHistorySpan.push(...searchHistoryQueries);
+  searchHistorySpan.push(...commonWebsites);
+}
+function searchHistory(searchTerm) {
+  searchTerm = searchTerm.trim().toLowerCase();
+  if (searchTerm === void 0 || searchTerm === null || searchTerm === "") {
+    clearHistory();
+    return [];
+  }
+  return searchHistorySpan.filter((item) => item.includes(searchTerm)).filter((item, index, self) => self.indexOf(item) === index).slice(0, maxHistoryItems);
+}
+function clearHistory() {
+  const searchHistoryItems = document.getElementById(
+    "search-history"
+  );
+  searchHistoryItems.innerHTML = "";
+}
+function bindToInput() {
+  const searchInput = document.getElementById(
+    "search-box"
+  );
+  searchInput.addEventListener("input", () => {
+    const searchTerm = searchInput.value;
+    const historyItems = searchHistory(searchTerm);
+    const historyList = document.getElementById(
+      "search-history"
+    );
+    historyList.innerHTML = "";
+    historyItems.forEach((item) => {
+      const listItem = document.createElement("p");
+      listItem.innerText = item;
+      listItem.addEventListener("click", () => {
+        searchInput.value = item;
+        search();
+      });
+      historyList.appendChild(listItem);
+    });
+  });
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      const searchTerm = searchInput.value;
+      addToSearchHistory(searchTerm);
+    }
+  });
+}
+getHistory();
+bindToInput();
+const CARD_COOKIE_NAME = "cards";
+const INSTANT_ANSWERS_COOKIE_NAME = "ia-setting";
+const SEARCH_ENGINE_COOKIE_NAME = "search-engine-setting";
+const CALENDAR_PROVIDER_COOKIE_NAME = "calendar-provider-setting";
+const KNOWN_TLDS = [".com", ".net", ".gov", ".org", ".eud"];
+const DEFAULT_PROTOCOL = "https://";
+const SUPPORTED_PROTOCOLS = [
+  "https://",
+  "http://",
+  "ftp://",
+  "file:///",
+  "chrome-extension://",
+  "#"
+];
+function setCookie(cookieName, cookieContent, exDays = 365) {
+  const dateObject = /* @__PURE__ */ new Date();
+  dateObject.setTime(dateObject.getTime() + exDays * 24 * 60 * 60 * 1e3);
+  let expires = dateObject.toUTCString();
+  document.cookie = `${cookieName}=${cookieContent};expires=${expires};path=/`;
+}
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return void 0;
+}
+function removeCookie(cookieName) {
+  document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+function doesExist(value) {
+  return value !== void 0 && value !== null;
+}
+function search() {
+  var _a2;
+  const searchTerm = (_a2 = document.getElementById("search-box")) == null ? void 0 : _a2.value;
+  addToSearchHistory(searchTerm);
+  let searching = false;
+  if (searchTerm) {
+    KNOWN_TLDS.forEach((tld) => {
+      if (searchTerm.includes(tld)) {
+        searching = true;
+        if (searchTerm.includes("://")) {
+          document.location.href = searchTerm;
+        } else {
+          document.location.href = DEFAULT_PROTOCOL + searchTerm;
+        }
+      }
+    });
+    if (searching)
+      return;
+    if (searchTerm.includes("://")) {
+      document.location.href = searchTerm;
+    } else {
+      document.location.href = constructSearchQuery(searchTerm);
+    }
+  }
+}
+function constructSearchQuery(searchTerm) {
+  const defaultSearchEngine = "https://www.google.com/search?q=";
+  const searchEngineSettingId = "search-engines";
+  const searchEngineSetting = document.getElementById(
+    searchEngineSettingId
+  );
+  if (doesExist(searchEngineSetting)) {
+    return searchEngineSetting.value + searchTerm;
+  }
+  return defaultSearchEngine + searchTerm;
+}
+function changeSearchEngine() {
+  const searchEngineSettingId = "search-engines";
+  const searchEngineSetting = document.getElementById(
+    searchEngineSettingId
+  );
+  if (doesExist(searchEngineSetting)) {
+    setCookie(
+      SEARCH_ENGINE_COOKIE_NAME,
+      searchEngineSetting.selectedIndex.toString()
+    );
+  }
+}
+function changeCalendarProvider() {
+  const calendarProviderSettingId = "calendar-providers";
+  const calendarProviderSetting = document.getElementById(
+    calendarProviderSettingId
+  );
+  if (doesExist(calendarProviderSetting)) {
+    setCookie(
+      CALENDAR_PROVIDER_COOKIE_NAME,
+      calendarProviderSetting.selectedIndex.toString()
+    );
+    const timeElement = document.getElementById("calendar-link");
+    if (timeElement !== null) {
+      timeElement.href = calendarProviderSetting.value;
+    }
+  }
+}
+function changeInstantAnswersSetting() {
+  const instantAnswersSettingId = "show-instant-answers-setting";
+  const instantAnswersSettingBox = document.getElementById(
+    instantAnswersSettingId
+  );
+  if (doesExist(instantAnswersSettingBox)) {
+    setCookie(
+      INSTANT_ANSWERS_COOKIE_NAME,
+      instantAnswersSettingBox.checked ? "1" : "0"
+    );
+  }
+}
+function shouldSearch(event) {
+  const key = event.keyCode || event.which;
+  if (key === 13) {
+    search();
+  } else {
+    if (key === 8) {
+      removeInstantAnswer();
+    }
+    const inputVal = document.getElementById("search-box").value;
+    if (inputVal) {
+      queryInstantAnswer();
+    } else {
+      clearHistory();
+    }
+  }
+}
+function shouldAddNewCardFromInput(event) {
+  const key = event.keyCode || event.which;
+  if (key === 13) {
+    getAndAddCardFromInput();
+  }
+}
+function getAndAddCardFromInput() {
+  const newCardUrlInput = document.getElementById(
+    "new-card-url-input"
+  );
+  if (newCardUrlInput !== void 0 && newCardUrlInput !== null) {
+    if (newCardUrlInput.value !== void 0 && newCardUrlInput.value !== null && newCardUrlInput.value !== "") {
+      addCard(newCardUrlInput.value);
+    }
+  }
+}
+function addCard(newCardURL) {
+  let foundSupportedProtocol = false;
+  SUPPORTED_PROTOCOLS.forEach((protocol) => {
+    if (newCardURL.includes(protocol)) {
+      foundSupportedProtocol = true;
+    }
+  });
+  if (!foundSupportedProtocol) {
+    newCardURL = DEFAULT_PROTOCOL + newCardURL;
+  }
+  const existingCards = getCookie(CARD_COOKIE_NAME);
+  if (existingCards !== void 0) {
+    if (existingCards.split(",").length <= 1) {
+      if (existingCards.includes(newCardURL)) {
+        alert("Duplicate Card Found...");
+        return;
+      }
+    } else {
+      if (existingCards.includes(`,${newCardURL}`)) {
+        alert("Duplicate Card Found...");
+        return;
+      }
+    }
+  }
+  setCookie(CARD_COOKIE_NAME, `${existingCards},${newCardURL}`);
+  window.location.reload();
+}
+function deleteCard(id, cardURL) {
+  if (doesExist(id)) {
+    const cardObj = document.getElementById(`${id}`);
+    if (cardObj !== null) {
+      cardObj.remove();
+      const currentCards = getCookie(CARD_COOKIE_NAME);
+      if (currentCards !== void 0) {
+        let newCards = currentCards;
+        [...SUPPORTED_PROTOCOLS, ""].forEach((protocol) => {
+          const scanningContent = `${protocol}${cardURL}`;
+          newCards = newCards.replace(`,${scanningContent}`, "");
+        });
+        removeCookie(CARD_COOKIE_NAME);
+        setCookie(CARD_COOKIE_NAME, newCards);
+      }
+    }
+  }
+}
+function createCard(cardURL, img = void 0, eventfunction = void 0, canRemove = true) {
+  var _a2;
+  const uniqueId = Math.random() * 1e3;
+  let faviconURL = "";
+  if (img === void 0) {
+    faviconURL = `https://${cardURL.split("/")[2]}/favicon.ico`;
+  } else {
+    faviconURL = img;
+  }
+  const newCardObj = document.createElement("div");
+  newCardObj.id = `${uniqueId}`;
+  newCardObj.className = "fav draggable";
+  const newCardLink = document.createElement("a");
+  let foundSupportedProtocol = false;
+  SUPPORTED_PROTOCOLS.forEach((protocol) => {
+    if (cardURL.includes(protocol)) {
+      foundSupportedProtocol = true;
+    }
+  });
+  if (!foundSupportedProtocol) {
+    newCardLink.href = DEFAULT_PROTOCOL + cardURL;
+  } else {
+    newCardLink.href = cardURL;
+  }
+  if (doesExist(eventfunction)) {
+    newCardObj.onclick = function() {
+      eventfunction();
+    };
+  }
+  if (img === void 0) {
+    newCardLink.innerHTML = `<img src="https://s2.googleusercontent.com/s2/favicons?domain_url=${faviconURL}" alt="${cardURL.replace(
+      "https://",
+      ""
+    )}">`;
+  } else {
+    newCardLink.innerHTML = `<img src="${faviconURL}" alt="${cardURL.replace(
+      "https://",
+      ""
+    )}">`;
+  }
+  const removeButton = document.createElement("button");
+  if (canRemove) {
+    removeButton.id = `${uniqueId}-removeBTN`;
+    removeButton.className = "removeCardButton";
+    removeButton.innerText = "X";
+    removeButton.addEventListener("click", function handleClick(event) {
+      deleteCard(uniqueId, cardURL);
+    });
+  }
+  newCardObj.appendChild(newCardLink);
+  if (canRemove)
+    newCardObj.appendChild(removeButton);
+  (_a2 = document.getElementById("card-container")) == null ? void 0 : _a2.appendChild(newCardObj);
+}
+function createCards() {
+  const historicalCards = getCookie(CARD_COOKIE_NAME);
+  const cards = historicalCards == null ? void 0 : historicalCards.split(",");
+  if (cards !== void 0 && (cards == null ? void 0 : cards.length) > 0) {
+    cards.forEach((cardURL) => {
+      if (cardURL !== void 0 && cardURL !== "undefined") {
+        createCard(cardURL);
+      }
+    });
+  }
+  createCard(
+    "#",
+    "https://cdn.iconscout.com/icon/free/png-256/add-plus-3114469-2598247.png",
+    () => showCardInput(),
+    false
+  );
+}
+function setInstantAnswersSettingCheckbox(value) {
+  const instantAnswersSettingId = "show-instant-answers-setting";
+  const instantAnswersBox = document.getElementById(
+    instantAnswersSettingId
+  );
+  if (doesExist(instantAnswersBox)) {
+    instantAnswersBox.checked = value;
+  }
+}
+function setSearchEngineSettings(index) {
+  const searchEngineSettingId = "search-engines";
+  const searchEngineSetting = document.getElementById(
+    searchEngineSettingId
+  );
+  if (doesExist(searchEngineSetting)) {
+    searchEngineSetting.selectedIndex = index;
+  }
+}
+function setCalendarProviderSettings(index) {
+  const calendarProviderSettingId = "calendar-providers";
+  const calendarProviderSetting = document.getElementById(
+    calendarProviderSettingId
+  );
+  if (doesExist(calendarProviderSetting)) {
+    calendarProviderSetting.selectedIndex = index;
+  }
+}
+function initSettings() {
+  if (getCookie(INSTANT_ANSWERS_COOKIE_NAME) === "0") {
+    setInstantAnswersSettingCheckbox(false);
+  } else {
+    setInstantAnswersSettingCheckbox(true);
+  }
+  const selectedSearchEngine = getCookie(SEARCH_ENGINE_COOKIE_NAME);
+  if (selectedSearchEngine !== void 0) {
+    setSearchEngineSettings(+selectedSearchEngine);
+  } else {
+    setSearchEngineSettings(0);
+  }
+  const selectedCalendarProvider = getCookie(CALENDAR_PROVIDER_COOKIE_NAME);
+  if (selectedCalendarProvider !== void 0) {
+    setCalendarProviderSettings(+selectedCalendarProvider);
+  } else {
+    setCalendarProviderSettings(0);
+  }
+  const calendarProviderSetting = document.getElementById(
+    "calendar-providers"
+  );
+  const timeElement = document.getElementById("calendar-link");
+  if (timeElement !== null) {
+    timeElement.href = calendarProviderSetting.value;
+  }
+}
+function setSettingsPaneDisplayStyle(shown) {
+  const settingsContainerId = "settings-pane";
+  const shownClass = "active";
+  const settingsPane = document.getElementById(settingsContainerId);
+  if (settingsPane !== void 0 && settingsPane !== null) {
+    if (settingsPane.classList.contains(shownClass)) {
+      settingsPane.classList.remove(shownClass);
+    } else {
+      settingsPane.classList.add(shownClass);
+    }
+  }
+}
+function openSettings() {
+  setSettingsPaneDisplayStyle();
+}
+function closeSettings() {
+  setSettingsPaneDisplayStyle();
+}
+function updateTime() {
+  let timeElement = document.getElementById("time");
+  if (timeElement !== null) {
+    const dateObject = /* @__PURE__ */ new Date();
+    let currentTime = `${dateObject.getHours() > 12 ? dateObject.getHours() - 12 : dateObject.getHours()}:${dateObject.getMinutes()}`;
+    let hour = currentTime.split(":")[0];
+    let minute = currentTime.split(":")[1];
+    if (hour.length < 2)
+      hour = `0${hour}`;
+    if (minute.length < 2)
+      minute = `0${minute}`;
+    if (hour.length < 2)
+      hour = `0${hour}`;
+    if (minute.length < 2)
+      minute = `0${minute}`;
+    timeElement.innerHTML = `${hour}:${minute}`;
+  }
+}
+function shouldShowInstantAnswers() {
+  const defaultReturnValue = true;
+  const settingId = "show-instant-answers-setting";
+  const settingElement = document.getElementById(settingId);
+  if (settingElement !== void 0 && settingElement !== null) {
+    return settingElement.checked;
+  }
+  return defaultReturnValue;
+}
+function queryInstantAnswer() {
+  if (!shouldShowInstantAnswers()) {
+    return;
+  }
+  let inputBox = document.getElementById("search-box");
+  if (inputBox !== null && inputBox !== void 0 && inputBox.value !== "") {
+    const query = inputBox.value;
+    fetch(
+      `https://api.duckduckgo.com/?q=${query}&format=json`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json"
+        }
+      }
+    ).then((response2) => response2.json()).then((json) => {
+      const instantAnswer = json.AbstractText;
+      if (instantAnswer !== void 0 && instantAnswer !== null && instantAnswer !== "") {
+        const instantAnswerBox = document.getElementById(
+          "instant-answer-box"
+        );
+        if (instantAnswerBox !== null && instantAnswerBox !== void 0) {
+          instantAnswerBox.innerHTML = instantAnswer;
+        }
+      } else {
+        const instantAnswerBox = document.getElementById(
+          "instant-answer-box"
+        );
+        if (instantAnswerBox !== null && instantAnswerBox !== void 0) {
+          instantAnswerBox.innerHTML = "";
+        }
+      }
+    });
+  }
+}
+function removeInstantAnswer() {
+  const instantAnswersBox = document.getElementById("instant-answer-box");
+  if (instantAnswersBox !== void 0 && instantAnswersBox !== null) {
+    instantAnswersBox.innerText = "";
+  }
+}
+function updateCardInputDisplay(newValue) {
+  const commandPallet = document.getElementById("command-pallet-container");
+  if (commandPallet !== void 0 && commandPallet !== null) {
+    commandPallet.style.display = newValue;
+  }
+  const newCardUrlInput = document.getElementById(
+    "new-card-url-input"
+  );
+  if (newCardUrlInput !== void 0 && newCardUrlInput !== null) {
+    newCardUrlInput.value = "";
+  }
+}
+function hideCardInput() {
+  updateCardInputDisplay("none");
+}
+function showCardInput() {
+  updateCardInputDisplay("block");
+}
+function updateBackground() {
+  const inputElement = document.getElementById(
+    "background-image-input"
+  );
+  const value = inputElement == null ? void 0 : inputElement.value;
+  if (value) {
+    localStorage.setItem("background-image", value);
+  } else {
+    localStorage.removeItem("background-image");
+  }
+  updateBackgroundElements();
+  window.location.reload();
+}
+function updateBackgroundElements() {
+  const value = localStorage.getItem("background-image");
+  if (value) {
+    const inputElement = document.getElementById(
+      "background-image-input"
+    );
+    const backgroundElement = document.getElementById("gradient");
+    if (inputElement !== null) {
+      inputElement.innerText = value;
+    }
+    backgroundElement.id = "background-image";
+    backgroundElement.style.backgroundImage = `url(${value})`;
+  }
+}
+function init() {
+  const currentDate = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+  const titleElement = document.getElementById("main-title");
+  if (titleElement !== null) {
+    titleElement.innerHTML = currentDate;
+  }
+  createCards();
+  initSettings();
+  updateBackgroundElements();
+  loop();
+}
+function loop() {
+  updateTime();
+  setTimeout(loop, 1e3);
+}
+init();
+const draggableItems = document.querySelectorAll(".draggable");
+const containers = document.querySelectorAll(".container");
+draggableItems.forEach((container) => {
+  container.addEventListener("dragstart", () => {
+    container.classList.add("dragging");
+  });
+  container.addEventListener("dragend", (e) => {
+    var _a2, _b2, _c2, _d2, _e2, _f2;
+    const afterElement = getDragAfterElement(containers[0], e.clientX);
+    const draggingItem = document.querySelector(".dragging");
+    if (!draggingItem)
+      return;
+    if (afterElement == null) {
+      (_a2 = container.parentNode) == null ? void 0 : _a2.appendChild(draggingItem);
+    } else {
+      (_b2 = container.parentNode) == null ? void 0 : _b2.insertBefore(draggingItem, afterElement);
+    }
+    draggingItem.classList.remove("dragging");
+    const currentCardOrder = getCookie(CARD_COOKIE_NAME);
+    if (!currentCardOrder)
+      return;
+    const draggingCardUrl = (_d2 = (_c2 = draggingItem.querySelector("a")) == null ? void 0 : _c2.href) == null ? void 0 : _d2.replace(/\/+$/, "");
+    if (!draggingCardUrl)
+      return;
+    const cards = currentCardOrder.split(",");
+    const draggingCardIndex = cards.indexOf(draggingCardUrl);
+    if (draggingCardIndex === -1)
+      return;
+    cards.splice(draggingCardIndex, 1);
+    const afterElementUrl = (_f2 = (_e2 = afterElement.querySelector("a")) == null ? void 0 : _e2.href) == null ? void 0 : _f2.replace(/\/+$/, "");
+    if (!afterElementUrl)
+      return;
+    const afterElementIndex = cards.indexOf(afterElementUrl);
+    if (afterElementIndex === -1) {
+      cards.push(draggingCardUrl);
+    } else {
+      cards.splice(afterElementIndex, 0, draggingCardUrl);
+    }
+    removeCookie(CARD_COOKIE_NAME);
+    setCookie(CARD_COOKIE_NAME, cards.join(","));
+  });
+});
+function getDragAfterElement(container, x) {
+  const draggableElements = [
+    ...container.querySelectorAll(".draggable:not(.dragging)")
+  ];
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = x - (box.left + box.width / 2 + 10);
+      if (offset < 0 && offset > closest.offset) {
+        return { offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
+}
+const targetColors = [
+  "#101004",
+  "#401010",
+  "#104010",
+  "#101040",
+  "#041010",
+  "#100410"
+];
+const cycleTime = 5e3;
+const targetElement = document.getElementById("gradient");
+function tick() {
+  const now = Date.now();
+  const cycle = Math.floor(now / cycleTime) % targetColors.length;
+  const cycleProgress = now % cycleTime / cycleTime;
+  const startColor = targetColors[cycle];
+  const endColor = targetColors[(cycle + 1) % targetColors.length];
+  const r1 = parseInt(startColor.substring(1, 3), 16);
+  const g1 = parseInt(startColor.substring(3, 5), 16);
+  const b1 = parseInt(startColor.substring(5, 7), 16);
+  const r2 = parseInt(endColor.substring(1, 3), 16);
+  const g2 = parseInt(endColor.substring(3, 5), 16);
+  const b2 = parseInt(endColor.substring(5, 7), 16);
+  const r = Math.floor(r1 + (r2 - r1) * cycleProgress);
+  const g = Math.floor(g1 + (g2 - g1) * cycleProgress);
+  const b = Math.floor(b1 + (b2 - b1) * cycleProgress);
+  targetElement.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+(_b = document.getElementById("hide-card-input-btn")) == null ? void 0 : _b.addEventListener("click", () => {
+  hideCardInput();
+});
+(_c = document.getElementById("add-card-btn")) == null ? void 0 : _c.addEventListener("click", () => {
+  getAndAddCardFromInput();
+});
+(_d = document.getElementById("new-card-url-input")) == null ? void 0 : _d.addEventListener("keyup", (e) => {
+  shouldAddNewCardFromInput(e);
+});
+(_e = document.getElementById("show-instant-answers-setting")) == null ? void 0 : _e.addEventListener("change", () => {
+  changeInstantAnswersSetting();
+});
+(_f = document.getElementById("update-background-btn")) == null ? void 0 : _f.addEventListener("click", () => {
+  updateBackground();
+});
+(_g = document.getElementById("calendar-providers")) == null ? void 0 : _g.addEventListener("change", () => {
+  changeCalendarProvider();
+});
+(_h = document.getElementById("search-engines")) == null ? void 0 : _h.addEventListener("change", () => {
+  changeSearchEngine();
+});
+(_i = document.getElementById("settings-toggle-btn")) == null ? void 0 : _i.addEventListener("click", () => {
+  openSettings();
+});
+(_j = document.getElementById("close-settings-btn")) == null ? void 0 : _j.addEventListener("click", () => {
+  closeSettings();
+});
+(_k = document.getElementById("search-box")) == null ? void 0 : _k.addEventListener("keyup", (e) => {
+  shouldSearch(e);
+});
+</script>
+    <style rel="stylesheet" crossorigin>:root {
+	--background-color: black;
+	--font-color: white;
+	--dimmed-font-color: #777;
+	--card-background: rgba(120, 120, 120, 0.1);
+	--card-background-focused: rgba(120, 120, 120, 0.3);
+	--tray-background-color: rgba(30, 30, 30);
+	--accent-color: #ff6961;
+	--transparent-accent-color: rgba(var(--accent-color), 0.15);
+	--curve-amount: 0.5rem;
+	--animation: all 0.15s ease;
+	--font-size: 2.5rem;
+	--font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  position: relative;
+  background-color: var(--background-color);
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  & > * {
+    color: var(--font-color);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  overflow: hidden;
+}
+
+button {
+  color: var(--font-color);
+  background-color: var(--card-background);
+  border-radius: var(--curve-amount);
+  border-style: none;
+  border-width: 1px;
+  font-size: calc(var(--font-size) / 2.5);
+  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  cursor: pointer;
+  margin: 1px;
+
+  &:hover {
+    background-color: var(--card-background-focused);
+    border-style: solid;
+    border-color: var(--accent-color);
+    margin: 0px;
+  }
+}
+
+#search-history {
+  position: relative;
+  text-align: start;
+  padding-left: 1rem;
+  margin-top: 0px;
+  padding-top: 1px;
+  width: 90%;
+  max-width: 55rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  border-top: none;
+  background-color: var(--card-background);
+  border-radius: var(--curve-amount);
+
+  & > p {
+    position: relative;
+    padding: 0.8rem;
+    margin: 0px;
+    border-radius: var(--curve-amount);
+
+    &:hover {
+      cursor: pointer;
+      color: var(--accent-color);
+      background-color: var(--card-background-focused);
+    }
+  }
+
+  &:has(p) {
+    border: 1px solid var(--card-background-focused);
+  }
+}
+
+#gradient {
+  position: absolute;
+}
+
+.background {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.btn--large {
+  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 2em;
+}
+
+input[type="url"],
+input[type="text"] {
+  position: relative;
+  border-radius: var(--curve-amount);
+  color: var(--font-color);
+  
+  font-family: var(--font-family);
+  padding: 1rem;
+  border-width: 2px;
+  border-color: var(--card-background-focused);
+  background-color: var(--card-background);
+  font-weight: lighter;
+  outline: none;
+  content: "";
+
+  &:focus {
+    background-color: var(--card-background-focused);
+  }
+}
+
+input[type=checkbox] {
+  accent-color: var(--accent-color);
+}
+
+#search-box {
+  height: 40px;
+  width: 90%;
+  max-width: 55rem;
+  font-size: 38px;
+}
+
+#background-image-input {
+  width: 60%;
+  font-size: calc(var(--font-size) / 2.5);
+}
+
+.content {
+  margin: auto;
+  position: relative;
+  width: 80%;
+  text-align: center;
+  top: 30%;
+}
+
+.time-container {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: fit-content;
+  width: fit-content;
+  
+  & > #calendar-link {
+    text-decoration: none;
+
+    & > #time {
+      color: var(--dimmed-font-color);
+      font-size: var(--font-size);
+      font-family: var(--font-family);
+  
+      &:hover {
+        transition: var(--animation);
+        color: var(--font-color);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+#instant-answer-box {
+  position: relative;
+  font-size: 1.2em;
+  color: var(--font-color);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  left: 0% !important;
+  text-align: justify;
+  text-align-last: center;
+  margin: 0 auto;
+  padding-top: 40px;
+  width: 80%;
+  left: -5%;
+  word-spacing: 5px;
+}
+
+.favs {
+  position: relative;
+  margin: auto;
+  top: calc(30% + 20px);
+  color: var(font-color);
+  width: 80%;
+  text-align: center;
+
+  & > .fav {
+    display: inline-block;
+    color: var(--font-color);
+    padding: 1em;
+    font-size: 20pt;
+    background-color: var(--card-background);
+    padding-bottom: 3em;
+    padding: 1em;
+    margin: 10px;
+    width: 187.5px;
+    height: 37.5px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    transform: scale(1);
+    transition: var(--animation);
+    border-radius: var(--curve-amount);
+
+    &:hover {
+      transform: scale(1.1);
+      border-style: solid;
+      border-color: var(--accent-color);
+      background-color: var(--card-background-focused);
+      border-width: 4px;
+      border-radius: calc(var(--curve-amount) * 2);
+      cursor: pointer;
+
+      .removeCardButton {
+        display: block;
+        padding: 5px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border-radius: var(--curve-amount);
+      }
+    }
+
+    a {
+      display: block;
+      position: relative;
+      top: -50%;
+      left: -10%;
+      width: 120%;
+      height: 200%;
+    }
+
+    & img {
+      position: relative;
+      top: 20px;
+      width: 30px;
+      height: 30px;
+      word-wrap: anywhere;
+      overflow-y: hidden;
+      max-height: 30px;
+    }
+  }
+
+  .removeCardButton {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border-style: none;
+    padding: 1px;
+    border-width: 1px;
+    color: white;
+    margin: 2px;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--card-background-focused);
+      border-style: solid;
+      border-color: var(--card-background);
+      border-width: 2px;
+      margin: 0px;
+    }
+  }
+}
+
+/* dragging event (added by draggable.ts) */
+.dragging {
+  background-color: var(--transparent-accent-color) !important;
+  scale: 1.22;
+
+  /* the remove button should be hidden if the user is dragging the card */
+  .removeCardButton {
+    display: none !important;
+  }
+}
+
+.corner {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.settings-icon {
+  position: a;
+  color: var(--dimmed-font-color);
+  font-size: calc(var(--font-size) / 1.8);
+  text-decoration: none;
+  transition: var(--animation);
+
+  &:hover {
+    color: var(--font-color);
+  }
+}
+
+.settings-pane {
+  position: absolute;
+  left: 70%;
+  top: 0px;
+  height: 95%;
+  width: calc(25% + 15px);
+  background-color: var(--tray-background-color);
+  padding: 40px;
+  padding-top: 10px;
+  border-left: var(--card-background);
+  border-left-style: solid;
+  transition: transform 0.5s ease-out;
+  transform: translateX(200%);
+
+  & > .close-btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  .setting {
+    margin-top: 40px;
+  }
+}
+
+.active {
+  transform: translateX(0%);
+}
+
+.settings-dropdown {
+  position: relative;
+  margin-top: 15px;
+  color: var(--font-color);
+  font-size: calc(var(--font-size) / 2);
+  background-color: var(--card-background);
+  border-color: var(--card-background-focused);
+  border-radius: var(--curve-amount);
+  padding: calc(var(--curve-amount) / 2);
+
+  &:focus {
+    border-color: var(--accent-color);
+    background-color: var(--background-color);
+  }
+}
+
+.command-pallet {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: var(--tray-background-color);
+  width: 100%;
+  height: 100%;
+
+  & > .action-buttons {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  & > #new-card-url-input {
+    position: absolute;
+    left: 50%;
+    top: calc(50% - 100px);
+    width: 45%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+  }
+}
+
+.divider {
+  position: relative;
+  border-color: var(--card-background-focused);
+  border-width: 1px;
+  border-style: solid;
+  width: 100%;
+}
+
+/* when on mobile */
+@media only screen and (max-width: 600px) {
+  .content {
+    top: 80px !important;
+    width: 100%;
+  }
+
+  .favs {
+    position: relative;
+    top: 100px !important;
+
+    & > .fav {
+      width: 38px !important;
+      height: 38px !important;
+    }
+  }
+
+  #instant-answer-box {
+    text-align: center !important;
+  }
+
+  .settings-icon {
+    display: none;
+  }
+}
+</style>
+  </head>
+
+  <body>
+    <div id="gradient" class="background">
+      <div class="time-container">
+        <a id="calendar-link" href="#">
+          <time id="time"></time>
+        </a>
+      </div>
+
+      <div class="content">
+        <input
+          id="search-box"
+          class="form-control p-3"
+          type="text"
+          placeholder="Search the web..."
+          autocomplete="off"
+          autofocus
+        />
+
+        <div id="search-history"></div>
+
+        <p id="instant-answer-box"></p>
+      </div>
+
+      <div id="card-container" class="favs container"></div>
+
+      <div class="corner">
+        <a id="settings-toggle-btn" href="#" class="settings-icon">
+          <i class="fa fa-sliders"></i>
+        </a>
+      </div>
+
+      <div id="settings-pane" class="settings-pane">
+        <h2>Settings</h2>
+        <button id="close-settings-btn" class="close-btn">Close</button>
+
+        <div class="divider"></div>
+
+        <div class="setting">
+          <label for="search-engines">
+            <strong>Search Engine</strong> </label
+          ><br />
+          <select
+            id="search-engines"
+            name="search-engines"
+            class="settings-dropdown"
+          >
+            <option value="https://www.google.com/search?q=" selected>
+              Google
+            </option>
+            <option value="https://www.bing.com/search?q=">Bing</option>
+            <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+            <option value="https://www.ecosia.org/search?q=">Ecosia</option>
+            <option value="https://search.brave.com/search?q=">
+              Brave Search
+            </option>
+          </select>
+        </div>
+
+        <div class="setting">
+          <label for="calendar-providers">
+            <strong>Calendar Provider</strong> </label
+          ><br />
+          <select
+            id="calendar-providers"
+            name="calendar-providers"
+            class="settings-dropdown"
+          >
+            <option value="https://calendar.google.com" selected>
+              Google Calendar
+            </option>
+            <option value="https://calendar.protonmail.com">
+              Proton Calendar
+            </option>
+            <option value="https://skiff.com/calendar">Skiff Calendar</option>
+            <option value="https://calendar.yahoo.com">Yahoo Calendar</option>
+            <option value="https://calendar.live.com">
+              Microsoft Calendar
+            </option>
+          </select>
+        </div>
+
+        <div class="setting">
+          <label for="background-image-input">
+            <strong>Background Image URL</strong>
+            <p>empty for gradient</p>
+          </label>
+
+          <input
+            id="background-image-input"
+            name="background-image-input"
+            type="url"
+          />
+          <button id="update-background-btn">Update</button>
+        </div>
+
+        <div class="setting">
+          <input
+            id="show-instant-answers-setting"
+            name="show-instant-answers-setting"
+            type="checkbox"
+            class="checkbox"
+            checked
+          />
+          <label for="show-instant-answers-setting">
+            <strong>Show Instant Answers</strong>
+          </label>
+        </div>
+      </div>
+
+      <div id="command-pallet-container" class="command-pallet">
+        <input
+          id="new-card-url-input"
+          type="url"
+          placeholder="Add URL to create cards"
+        />
+
+        <div class="action-buttons">
+          <button id="add-card-btn" class="btn--large">
+            Add Card
+          </button>
+          <button id="hide-card-input-btn" class="btn--large">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
