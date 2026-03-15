@@ -1,0 +1,127 @@
+  .about-page {
+    min-height: 100vh;
+  }
+
+  .hero-small {
+    padding: 4rem 0 2.5rem 0;
+    text-align: center;
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .eyebrow {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    margin: 0 auto 1rem;
+    padding: 0.3rem 0.7rem;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    display: inline-flex;
+    background: var(--surface-muted);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .hero-small h1 {
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .content-section {
+    padding: 4rem 0;
+  }
+
+  .content-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .content-block {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .content-block h2 {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+
+  .content-block p {
+    margin-bottom: 1rem;
+  }
+
+  .principles-list,
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .principles-list li,
+  .features-list li {
+    padding: 0.75rem 0;
+    border-bottom: 2px dashed var(--border);
+    color: var(--text-muted);
+  }
+
+  .principles-list li:last-child,
+  .features-list li:last-child {
+    border-bottom: none;
+  }
+
+  .principles-list strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .cta-section {
+    padding: 4rem 0;
+    background: var(--surface-muted);
+    border-top: 2px solid var(--border);
+  }
+
+  .cta-card {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .cta-card h2 {
+    margin-bottom: 1rem;
+  }
+
+  .cta-card p {
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-buttons a {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    .content-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+

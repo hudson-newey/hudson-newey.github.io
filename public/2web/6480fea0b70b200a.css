@@ -1,0 +1,215 @@
+  .home-page {
+    min-height: 100vh;
+  }
+
+  .hero {
+    padding: 5.5rem 0 4.5rem;
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.75rem;
+    align-items: center;
+  }
+
+  .hero-content {
+    text-align: left;
+    max-width: 720px;
+  }
+
+  .eyebrow {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.8rem;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-muted);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero-buttons a {
+    text-decoration: none;
+    padding: 1rem 2rem;
+      .hero-animation {
+        position: relative;
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+        aspect-ratio: 4 / 3;
+        display: grid;
+        place-items: center;
+        filter: drop-shadow(6px 6px 0 rgba(0, 0, 0, 0.08));
+        opacity: 0.95;
+      }
+
+      .wireframe-svg {
+        width: 100%;
+        height: 100%;
+        stroke: var(--border);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .wf-line {
+        stroke-dasharray: 420;
+        stroke-dashoffset: 420;
+        animation: draw 2.8s ease-in-out infinite;
+      }
+
+      .delay-1 { animation-delay: 0s; }
+      .delay-2 { animation-delay: 0.25s; }
+      .delay-3 { animation-delay: 0.5s; }
+      .delay-4 { animation-delay: 0.75s; }
+      .delay-5 { animation-delay: 1s; }
+
+      .wf-node {
+        fill: var(--surface);
+        stroke: var(--border);
+        stroke-width: 3;
+        animation: pulse-node 2.6s ease-in-out infinite;
+      }
+
+      .wireframe-orbit {
+        position: absolute;
+        inset: 18% 12%;
+        border: 2px dashed var(--border);
+        border-radius: 26px;
+        animation: float 6s ease-in-out infinite;
+        opacity: 0.55;
+      }
+
+      @keyframes draw {
+        0% { stroke-dashoffset: 420; opacity: 0; }
+        15% { opacity: 1; }
+        70% { stroke-dashoffset: 0; opacity: 1; }
+        100% { stroke-dashoffset: 0; opacity: 1; }
+      }
+
+      @keyframes pulse-node {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(-6px, -6px); }
+      }
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .features {
+    padding: 5rem 0 4rem;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-lead {
+    text-align: center;
+    max-width: 720px;
+    margin: -3rem auto 3rem;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .demo-section {
+    padding: 5rem 0;
+    background: var(--surface-muted);
+    border-top: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .code-example {
+    padding: 5rem 0 6rem;
+  }
+
+  .code-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-style: dashed;
+  }
+
+  .code-card pre {
+    margin: 0;
+    overflow-x: auto;
+  }
+
+  .code-card code {
+    color: var(--text);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .hero-buttons {
+      justify-content: center;
+    }
+
+    .hero-animation {
+      max-width: 280px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+

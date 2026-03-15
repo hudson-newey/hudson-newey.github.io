@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<sitemap>
+		<urlset>
+			<url><loc>dist/kit.html</loc></url>
+<url><loc>dist/docs.html</loc></url>
+<url><loc>dist/index.html</loc></url>
+
+		</urlset>
+	</sitemap>
+
