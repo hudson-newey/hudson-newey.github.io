@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #111;
+    color: #ccc;
+}
+
+.controls {
+    display: flex;
+    gap: 0.75rem 1.5rem;
+
+    padding: 1.25rem 2rem;
+
+    background: #1e1e1e;
+    border-bottom: 1px solid #333;
+
+    label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &:not(:first-child) {
+            border-left: 2px solid #444;
+            padding-left: 1.5rem;
+        }
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    width: 20rem;
+    min-width: fit-content;
+    min-height: fit-content;
+    padding: 4rem;
+    padding-inline: 6rem;
+    margin: 3rem;
+
+    color: #ddd;
+    background-color: #444;
+
+    font-size: 1.3rem;
+    letter-spacing: 0.7px;
+    line-height: 1.7em;
+    text-align: center;
+
+    h2 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+}
+
+.resizable {
+    overflow: auto;
+    resize: both;
+}
+/** ----- start of waffle border ----- */
+:root {
+  --border-color: #ccc;
+  --background-color: #444;
+
+  --border-size: 4px;
+  --border-radius: 24px;
+  --corner-shape: superellipse(1.75);
+}
+/*
+  When rounding the edges of two elements, it's not as simple as just applying
+  the same border-radius to both of them.
+  To have correct optical rounding, the inner element needs to have a smaller
+  border-radius than the outer element.
+  This ensures that the inner element does not poke out of the border at the
+  corners.
+
+  This css function takes an outer border-radius and a border size, and returns
+  the correct inner border-radius to achieve correct optical rounding.
+*/
+@function --inner-rounding(--outer-radius, --outer-border-size) {
+  result: calc(var(--outer-radius) - var(--outer-border-size));
+}
+.fancy-waffle {
+  --x-dash-count: 12;
+  --y-dash-count: 6;
+  --x-segment-size: calc(100% / (2 * var(--x-dash-count) - 1));
+  --y-segment-size: calc(100% / (2 * var(--y-dash-count) - 1));
+
+  position: relative;
+  border-radius: var(--border-radius);
+  corner-shape: var(--corner-shape);
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent var(--y-segment-size),
+      var(--background-color) var(--y-segment-size),
+      var(--background-color) calc(2 * var(--y-segment-size))
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--border-color) 0,
+      var(--border-color) var(--x-segment-size),
+      var(--background-color) var(--x-segment-size),
+      var(--background-color) calc(2 * var(--x-segment-size))
+    );
+
+  background-size: 100% 100%;
+  background-position: 0 0, 0 0;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+    inset: var(--border-size);
+    width: calc(100% - (2 * var(--border-size)));
+    height: calc(100% - (2 * var(--border-size)));
+
+    background-color: inherit;
+    pointer-events: none;
+    border-radius: --inner-rounding(var(--border-radius), var(--border-size));
+    corner-shape: var(--corner-shape);
+  }
+
+  > * {
+    position: relative;
+  }
+}
