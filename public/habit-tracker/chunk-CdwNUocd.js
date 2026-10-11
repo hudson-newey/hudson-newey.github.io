@@ -1,0 +1,1 @@
+import {n as je,m as fg,t as te}from'./main-TGP2JNEH.js';var f=(()=>{class t extends je{completionVibration(){navigator.vibrate(1001);}static{this.\u0275fac=(()=>{let r;return function(a){return (r||(r=fg(t)))(a||t)}})();}static{this.\u0275prov=te({token:t,factory:t.\u0275fac,providedIn:"root"});}}return t})();export{f};

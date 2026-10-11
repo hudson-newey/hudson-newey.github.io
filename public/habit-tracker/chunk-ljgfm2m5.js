@@ -1,0 +1,1 @@
+import {b as bv,k as Ka,O as OI,l as Ja}from'./main-TGP2JNEH.js';var p=(()=>{class e{constructor(){}static{this.\u0275fac=function(t){return new(t||e)};}static{this.\u0275cmp=bv({type:e,selectors:[["ng-component"]],decls:2,vars:0,template:function(t,r){t&1&&(Ka(0,"h1"),OI(1,"Schedule"),Ja());},encapsulation:2});}}return e})();export{p as SchedulePageComponent};

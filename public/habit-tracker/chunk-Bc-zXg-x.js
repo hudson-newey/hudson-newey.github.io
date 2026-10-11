@@ -1,0 +1,1 @@
+import {s as DO,A as xv}from'./main-TGP2JNEH.js';var s=(()=>{class e{constructor(){this.creating=DO.required(),this.model=DO({});}static{this.\u0275fac=function(i){return new(i||e)};}static{this.\u0275dir=xv({type:e,selectors:[["app-abstract-form"]],inputs:{creating:[1,"creating"],model:[1,"model"]}});}}return e})();export{s};
