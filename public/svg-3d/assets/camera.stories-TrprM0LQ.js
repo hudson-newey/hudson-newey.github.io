@@ -1,4 +1,4 @@
-import{t as e}from"./rolldown-runtime-Dh6celcD.js";import{n as t,s as n}from"./iframe-AQDWLhrx.js";import{r,t as i}from"./unsafe-html-DYJTwfX5.js";import{t as a}from"./svg3d-viewer-Dk5JzEjg.js";var o,s,c,l,u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{t(),i(),a(),o={title:`SVG3D/3 Camera`,component:`svg3d-viewer`,parameters:{docs:{autodocs:!0}}},s=(e,t=460,r=380)=>n`<svg3d-viewer .markup=${e} style="width:${t}px;height:${r}px"></svg3d-viewer>`,c=(e,t=460,i=380)=>n`<svg3d-viewer style="width:${t}px;height:${i}px">${r(e)}</svg3d-viewer>`,l=()=>{let e=[[0,0,0],[100,0,0],[0,100,0],[100,100,0],[0,0,100],[100,0,100],[0,100,100],[100,100,100]];return[[0,1],[2,3],[4,5],[6,7],[0,2],[1,3],[4,6],[5,7],[0,4],[1,5],[2,6],[3,7]].map(t=>{let n=t[0],r=t[1];return`<line x1="${e[n][0]}" y1="${e[n][1]}" z1="${e[n][2]}" x2="${e[r][0]}" y2="${e[r][1]}" z2="${e[r][2]}"/>`}).join(`
+import{t as e}from"./rolldown-runtime-Dh6celcD.js";import{n as t,s as n}from"./iframe-CFewjbFk.js";import{r,t as i}from"./unsafe-html-BLM19FVA.js";import{t as a}from"./svg3d-viewer-DYrgqUb-.js";var o,s,c,l,u,d,f,p,m,h,g,_,v,y,b;function x(){return(x=e((()=>{t(),i(),a(),o={title:`SVG3D/3 Camera`,component:`svg3d-viewer`,parameters:{docs:{autodocs:!0}}},s=(e,t=460,r=380)=>n`<svg3d-viewer .markup=${e} style="width:${t}px;height:${r}px"></svg3d-viewer>`,c=(e,t=460,i=380)=>n`<svg3d-viewer style="width:${t}px;height:${i}px">${r(e)}</svg3d-viewer>`,l=()=>{let e=[[0,0,0],[100,0,0],[0,100,0],[100,100,0],[0,0,100],[100,0,100],[0,100,100],[100,100,100]];return[[0,1],[2,3],[4,5],[6,7],[0,2],[1,3],[4,6],[5,7],[0,4],[1,5],[2,6],[3,7]].map(t=>{let n=t[0],r=t[1];return`<line x1="${e[n][0]}" y1="${e[n][1]}" z1="${e[n][2]}" x2="${e[r][0]}" y2="${e[r][1]}" z2="${e[r][2]}"/>`}).join(`
     `)},u=()=>{let e=[];for(let t=-50;t<=250;t+=50)e.push(`<line x1="${t}" y1="140" z1="-100" x2="${t}" y2="140" z2="300"/>`),e.push(`<line x1="-100" y1="140" z1="${t}" x2="300" y2="140" z2="${t}"/>`);return e.join(`
     `)},d=`
     <g stroke="#4a5568" stroke-width="1.5">
@@ -20,11 +20,9 @@ import{t as e}from"./rolldown-runtime-Dh6celcD.js";import{n as t,s as n}from"./i
     <camera projection="perspective" fov="55" position="220 180 280" target="50 50 50" up="0 1 0" near="1"/>
     ${d}
   </svg>`,h={name:`Keyboard camera controls (click to focus, then use keys)`,render:()=>n`<div>
-      <svg3d-viewer
-        controls
+      <svg3d-viewer controls style="width:520px;height:420px">
         ${r(m)}
-        style="width:520px;height:420px"
-      ></svg3d-viewer>
+      </svg3d-viewer>
       <p style="font:12px/1.5 sans-serif;max-width:520px;color:#64748b">
         Click the canvas (or Tab to it) so it has focus, then:
         <b>←/→</b> orbit around the target · <b>↑/↓</b> orbit elevation · <b>+/−</b> dolly in/out ·
